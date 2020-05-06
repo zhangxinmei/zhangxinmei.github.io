@@ -1,0 +1,1085 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="GraphQL入门指南, zhangxinmei">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>GraphQL入门指南 | zhangxinmei</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">zhangxinmei</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">zhangxinmei</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">GraphQL入门指南</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/GraphQL/">
+                                <span class="chip bg-color">GraphQL</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-05-06
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><img src="/images/graphql/01.jpeg" alt="graphQL"></p>
+<p>现如今最常讨论的技术之一便是 API，但是很多人并不知道什么是 API，简单的来说，API 代表应用程序编程接口（Application Programming Interface）。顾名思义，就是为开发者、用户、消费者提供数据交互的接口。</p>
+<p>你可以将 API 视为调酒师，你向调酒师请求一杯酒，然后他为你调出你想要的酒。这看似非常简单，但是为什么会存在问题呢？</p>
+<p>自现代网络发展以来，构建 API 并不像听起来那么难，但是学习和理解 API 却不是一件简单的事。很多开发者会使用 API 来构建某些内容，或者仅仅是使用数据。因此，API 应该尽可能简洁、直观。经过精心设计的 API 会非常易于学习和使用，同时也会很直观，所以在开始设计 API 时一定要记住这点。</p>
+<p>一直以来我们都在使用 REST 来构建 API，随之也带来了一些问题。使用 REST 来设计构建 API 时，你将会面临以下问题：</p>
+<ul>
+<li>你需要访问很多资源路径</li>
+<li>不易于开发者学习和理解API</li>
+<li>存在信息过度或不足的问题</li>
+</ul>
+<p>为了解决这些问题，Facebook 创建了 GraphQL。现如今，我认为 GraphQL 是构建 API 的最佳方式，本文将会告诉你为什么我们现在需要学习 GraphQL。</p>
+<p>通过这篇文章，你将学习到 GraphQL 的工作原理，同时我将向你展示如何使用 GraphQL创建设计良好、高效以及功能强大的 API。</p>
+<p>在这之前你可能已经听过 GraphQL，因为有很多人和很多公司已经在使用 GraphQL。GraphQL 是开源的，因此它的社区已经变得非常强大。</p>
+<p>那么现在，是时候开始在实践中学习 GraphQL 是如何工作的了，以及感受它的魔力啦~</p>
+<h3 id="什么是GraphQL？"><a href="#什么是GraphQL？" class="headerlink" title="什么是GraphQL？"></a>什么是GraphQL？</h3><p><a href="https://graphql.org/" target="_blank" rel="noopener">GraphQL</a> 是 Facebook 开发的一种开源查询语言。它为我们提供了一种更有效的方法来设计、创建和使用我们的 API，可以说它是 REST 的替代品。</p>
+<p>GraphQL 有很多功能，例如：</p>
+<ul>
+<li>你可以定义你想要的数据，并获取你所需要的数据，不再像我们使用REST那样获取冗余数据。</li>
+<li>它给我们提供单一的API资源路径, API升级不再需要区分版本。</li>
+<li>GraphQL 是强类型的，你可以在执行之前在 GraphQL 类型系统中验证查询，它可以帮助我们构建更健壮的 API。</li>
+</ul>
+<p>这是一篇关于 GraphQL 为什么如此强大以及为何 GraphQL 如今获得了大量人气的基础介绍。如果你想了解更多关于 GraphQL 的信息，我建议你查看<a href="https://graphql.org/" target="_blank" rel="noopener">GraphQL</a> 官网并查看它。</p>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>本文的主要目的不是学习如何配置 GraphQL 服务器，所以我们现在还没有深入研究。而本文的主要目的在于了解GraphQL在实践中的工作原理，因此我们将使用一个名为 <a href="https://github.com/glennreyes/graphpack" target="_blank" rel="noopener">Graphpack</a> 的服务器。</p>
+<p>在开始我们的项目前，我们需要创建一个新的文件夹，你可以随意命名，我打算将它命名为 graphql-server。</p>
+<p>打开终端并输入：</p>
+<pre class=" language-js"><code class="language-js">
+mkdir graphql<span class="token operator">-</span>server
+</code></pre>
+<p>现在，你需要在你的电脑上安装 npm 或 yarn，npm 和 yarn 是编程语言 JavaScript 的包管理器，对于 Node.js，默认包管理器是 npm。</p>
+<p>进入你创建的文件夹，输入以下命令：</p>
+<pre class=" language-js"><code class="language-js">
+npm init <span class="token operator">-</span>y
+</code></pre>
+<p>如果你使用的是 yarn，则输入以下命令：</p>
+<pre class=" language-js"><code class="language-js">
+yarn init 
+</code></pre>
+<p>npm 将会为你自动创建一个 package.json 文件，你安装的所有依赖和命令都会在这个文件中。</p>
+<p>现在，我们需要安装我们将要使用的唯一依赖项——Graphpack。</p>
+<p><a href="https://github.com/glennreyes/graphpack" target="_blank" rel="noopener">Graphpack</a> 允许你创建零配置的 GraphQL 服务器，对于刚开始学习GraphQL 的我们来说这将帮助我们学习更多其他的内容，而不必担心复杂的服务器配置。</p>
+<p>进入项目的根目录，在终端输入以下命令：</p>
+<pre class=" language-js"><code class="language-js">
+npm install <span class="token operator">--</span>save<span class="token operator">-</span>dev graphpack
+</code></pre>
+<p>如果你使用的是 yarn，则输入以下命令：</p>
+<pre class=" language-js"><code class="language-js">yarn add <span class="token operator">--</span>dev graphpack</code></pre>
+<p>安装完 graphpack 之后，找到 package.json 文件中 scripts 配置项，加入如下代码：</p>
+<pre class=" language-js"><code class="language-js"><span class="token string">"scripts"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"dev"</span><span class="token punctuation">:</span> <span class="token string">"graphpack"</span><span class="token punctuation">,</span>
+    <span class="token string">"build"</span><span class="token punctuation">:</span> <span class="token string">"graphpack build"</span>
+<span class="token punctuation">}</span></code></pre>
+<p>我们将创建一个名为 src 的文件夹，它将成为整个服务器中唯一的文件夹。</p>
+<p>创建完名为 src 的文件夹之后，我们接着在 src 文件夹下创建3个文件。首先创建名为schema.graphql 的文件，在这个文件中,加入如下代码：</p>
+<pre class=" language-js"><code class="language-js">
+type Query <span class="token punctuation">{</span>
+  hello<span class="token punctuation">:</span> String
+<span class="token punctuation">}</span>
+</code></pre>
+<p>schema.graphql 文件将是整个 GraphQL 的架构，如果你不懂这是什么，别担心，我稍后会进行解释。</p>
+<p>接着在 src 文件夹中新建第二个名为 resolvers.js 的文件，加入如下代码：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> users <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./db"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> resolvers <span class="token operator">=</span> <span class="token punctuation">{</span>
+  Query<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    hello<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">"Hello World!"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> resolvers<span class="token punctuation">;</span></code></pre>
+<p>resolvers.js 文件是我们将 GraphQL 操作转换为数据的指令的方式。</p>
+<p>最后，在 src 文件夹下创建第三个文件 db.js：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">let</span> users <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span> id<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> <span class="token string">"John Doe"</span><span class="token punctuation">,</span> email<span class="token punctuation">:</span> <span class="token string">"john@gmail.com"</span><span class="token punctuation">,</span> age<span class="token punctuation">:</span> <span class="token number">22</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> id<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> <span class="token string">"Jane Doe"</span><span class="token punctuation">,</span> email<span class="token punctuation">:</span> <span class="token string">"jane@gmail.com"</span><span class="token punctuation">,</span> age<span class="token punctuation">:</span> <span class="token number">23</span> <span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre>
+<p>在本教程中，我们没有使用真实的数据库，因此，db.js 文件将模拟数据库，仅用于学习的目的。</p>
+<p>现在 src 文件夹应该如下：</p>
+<pre class=" language-js"><code class="language-js">src
+  <span class="token operator">|</span><span class="token operator">--</span>db<span class="token punctuation">.</span>js
+  <span class="token operator">|</span><span class="token operator">--</span>resolvers<span class="token punctuation">.</span>js
+  <span class="token operator">|</span><span class="token operator">--</span>schema<span class="token punctuation">.</span>graphql</code></pre>
+<p>如果你在终端运行 npm run dev 或者 yarn dev，你就会在终端看到以下输出：</p>
+<p><img src="/images/graphql/02.png" alt="终端运行结果"></p>
+<p>现在通过本地访问 localhost:4000，这意味着我们已经准备好开始在GraphQL中编写我们的第一个查询，变更和订阅。本地运行以后你可以看到 GraphQL Playground，这是一个功能强大的 GraphQL IDE，可用于更好的开发工作流程。如果你想了解更多关于GraphQL Playground，<a href="https://www.prisma.io/blog/introducing-graphql-playground-f1e0a018f05d/" target="_blank" rel="noopener">请点击这里</a></p>
+<h3 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h3><p>GraphQL 有自己的语言类型，用于编写模式。这是一种称为模式定义语言（SDL）的人类可读模式语法。无论你使用何种技术，SDL 都是相同的，你可以将其用于你想要的任何语言或框架。</p>
+<p>这种模式语言非常有用，因为它很容易就知道你的 API 将具有哪些类型，这样你可以通过正确的方式来理解它。</p>
+<h3 id="类型（Types）"><a href="#类型（Types）" class="headerlink" title="类型（Types）"></a>类型（Types）</h3><p>类型是 GraphQL 最重要的特性之一，类型是自定义的对象，代表着 API 的外观。举个例子：如果你正在构建一个社交媒体应用程序，那么你的 API 应该具有 Posts，Users，Likes，Groups 等类型。</p>
+<p>类型具有字段，这些字段返回特定类型的数据。例如，我们创建一个用户类型，那么这个用户类型应该具有 name， email 和 age 字段。类型字段可以是任何类型，并始终返回一种数据类型，如 Int，Float，String，Boolean，ID，对象类型列表或自定义对象类型。</p>
+<p>现在我们开始编写我们的第一个类型，在 schema.graphql 文件用如下代码替换已存在的Query 类型：</p>
+<pre class=" language-js"><code class="language-js">
+type User <span class="token punctuation">{</span>
+  id<span class="token punctuation">:</span> ID<span class="token operator">!</span>
+  name<span class="token punctuation">:</span> String<span class="token operator">!</span>
+  email<span class="token punctuation">:</span> String<span class="token operator">!</span>
+  age<span class="token punctuation">:</span> Int
+<span class="token punctuation">}</span>
+</code></pre>
+<p>每个用户都将拥有一个 ID，因此我们给它提供了 ID 类型。用户也会有一个 name 和eamil，所以我们给它一个 String 类型，而 age 我们给它一个Int类型，很简单吧？</p>
+<p>那么，每行末尾的!是什么意思呢？感叹号表示字段不能为空，这意味着每个字段必须在每个查询中返回一些数据，用户 User 类型中唯一可以为空的字段是 age。</p>
+<p>在 GraphQL 中，将处理三个主要概念：</p>
+<ul>
+<li><p>查询（queries）：从服务器获取数据的方式。</p>
+</li>
+<li><p>变更（mutations）：修改服务器上的数据并获取更新的数据（创建，更新，删除）的方式。</p>
+</li>
+<li><p>订阅（subscriptions）：与服务器保持实时连接的方式。</p>
+</li>
+</ul>
+<p>接下来我将会向你一一解释这些概念，让我们先从查询开始吧！</p>
+<h3 id="查询（Queries）"><a href="#查询（Queries）" class="headerlink" title="查询（Queries）"></a>查询（Queries）</h3><p>简单的解释，GraphQL 中的查询就是你获取数据的方式。GraphQL 查询中最棒的事情之一就是可以获取到你所需的确切数据，不多也不少。这将对我们的 API 产生积极的影响——不再像使用 REST API 那样过度获取或提取不足的信息。</p>
+<p>我们将在 GraphQL 中创建第一个类型的查询，我们所有的查询都将以此类型结束。首先，在 schema.graphql 编写一个名为 Query 的新类型：</p>
+<pre class=" language-js"><code class="language-js">
+type Query <span class="token punctuation">{</span>
+  users<span class="token punctuation">:</span> <span class="token punctuation">[</span>User<span class="token operator">!</span><span class="token punctuation">]</span><span class="token operator">!</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这很简单：users 查询将返回给我们一个或多个用户的数组，这个数组不会返回 null，因为我们给 users 加了!，这意味着 users 是一个不可为空的查询，它总是会返回数据。</p>
+<p>但是我们也可以返回特定的用户，为此，我们将创建一个名为 user 的新查询。在我们的Query 类型中，写入以下代码：</p>
+<pre class=" language-js"><code class="language-js"><span class="token function">user</span><span class="token punctuation">(</span>id<span class="token punctuation">:</span> ID<span class="token operator">!</span><span class="token punctuation">)</span><span class="token punctuation">:</span> User<span class="token operator">!</span>
+</code></pre>
+<p>现在我们的 Query 类型应该如下所示：</p>
+<pre class=" language-js"><code class="language-js">
+type Query <span class="token punctuation">{</span>
+  users<span class="token punctuation">:</span> <span class="token punctuation">[</span>User<span class="token operator">!</span><span class="token punctuation">]</span><span class="token operator">!</span>
+  <span class="token function">user</span><span class="token punctuation">(</span>id<span class="token punctuation">:</span> ID<span class="token operator">!</span><span class="token punctuation">)</span><span class="token punctuation">:</span> User<span class="token operator">!</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>如你所看到的，使用 GraphQL 中的查询，我们也可以传递参数。在这个例子中，我们要查询特定的用户，因此传递参数 ID。</p>
+<p>但是，你可能会想：GraphQL 是怎么知道获取数据的具体位置的？这就是为什么我们还需要有一个 resolvers.js 文件，该文件告诉 GraphQL 它将如何以及从何处获取数据。</p>
+<p>首先，在 resolvers.js 文件中导入刚刚创建的 db.js，这时你的 resolvers.js 文件应如下所示：</p>
+<pre class=" language-js"><code class="language-js">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> users <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./db"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> resolvers <span class="token operator">=</span> <span class="token punctuation">{</span>
+  Query<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    hello<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">"Hello World!"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> resolvers<span class="token punctuation">;</span>
+</code></pre>
+<p>接着我们将创建第一个查询，找到 resolvers.js 文件并替换其中的 hello 函数。现在，你的查询类型应如下所示：</p>
+<pre class=" language-js"><code class="language-js">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> users <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./db"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> resolvers <span class="token operator">=</span> <span class="token punctuation">{</span>
+  Query<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    user<span class="token punctuation">:</span> <span class="token punctuation">(</span>parent<span class="token punctuation">,</span> <span class="token punctuation">{</span> id <span class="token punctuation">}</span><span class="token punctuation">,</span> context<span class="token punctuation">,</span> info<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> users<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>user <span class="token operator">=</span><span class="token operator">></span> user<span class="token punctuation">.</span>id <span class="token operator">===</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    users<span class="token punctuation">:</span> <span class="token punctuation">(</span>parent<span class="token punctuation">,</span> args<span class="token punctuation">,</span> context<span class="token punctuation">,</span> info<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> users<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> resolvers<span class="token punctuation">;</span>
+</code></pre>
+<p>现在，我将解释一下它是如何工作的：<br>每个查询解析器都有四个参数，在 user 函数中，我们将 id 作为参数传递，然后返回与传递的 id 匹配的特定用户，就是这么简单。而在 users 函数中，将返回已存在的 users 数组，它将始终给我们返回所有的用户。</p>
+<p>我们将测试我们的查询是否运行正常，访问 localhost:4000 并输入以下代码：</p>
+<pre class=" language-js"><code class="language-js">query <span class="token punctuation">{</span>
+  users <span class="token punctuation">{</span>
+    id
+    name
+    email
+    age
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>这时候应该给我们返回所有的用户。</p>
+<p>或者，如果要返回特定用户：</p>
+<pre class=" language-js"><code class="language-js">query <span class="token punctuation">{</span>
+  <span class="token function">user</span><span class="token punctuation">(</span>id<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    id
+    name
+    email
+    age
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>接下来，我们将开始学习变更（<strong>mutations</strong>），这是 GraphQL 中最重要的功能之一。</p>
+<h3 id="变更（Mutations）"><a href="#变更（Mutations）" class="headerlink" title="变更（Mutations）"></a>变更（Mutations）</h3><p>在 GraphQL 中，mutations 是你修改服务器上的数据并获取更新数据的方式，你可以把它跟 REST 中的 CUD（创建，更新，删除）一样思考。</p>
+<p>我们将在 GraphQL 中创建我们的第一个类型变更，我们所有的变更都将以这种类型结束。在 schema.graphql 文件中编写一个名为 mutation 的新类型：</p>
+<pre class=" language-js"><code class="language-js">type Mutation <span class="token punctuation">{</span>
+  <span class="token function">createUser</span><span class="token punctuation">(</span>id<span class="token punctuation">:</span> ID<span class="token operator">!</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> String<span class="token operator">!</span><span class="token punctuation">,</span> email<span class="token punctuation">:</span> String<span class="token operator">!</span><span class="token punctuation">,</span> age<span class="token punctuation">:</span> Int<span class="token punctuation">)</span><span class="token punctuation">:</span> User<span class="token operator">!</span>
+  <span class="token function">updateUser</span><span class="token punctuation">(</span>id<span class="token punctuation">:</span> ID<span class="token operator">!</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> String<span class="token punctuation">,</span> email<span class="token punctuation">:</span> String<span class="token punctuation">,</span> age<span class="token punctuation">:</span> Int<span class="token punctuation">)</span><span class="token punctuation">:</span> User<span class="token operator">!</span>
+  <span class="token function">deleteUser</span><span class="token punctuation">(</span>id<span class="token punctuation">:</span> ID<span class="token operator">!</span><span class="token punctuation">)</span><span class="token punctuation">:</span> User<span class="token operator">!</span>
+<span class="token punctuation">}</span></code></pre>
+<p>正如你所见，我们将有三个变更：</p>
+<p>createUser：我们应该传递一个 id，name，email 和 age，它将会为我们创建一个新的用户。</p>
+<p>updateUser：我们应该传递一个 id，一个新的 name，email 或 age，它将会为我们返回一个新用户。</p>
+<p>deleteUser：我们应该传递一个 id，它将会为我们返回一个新用户。</p>
+<p>现在，在 resolvers.js 文件中的 Query 对象下面，创建一个新的变更对象，如下所示</p>
+<pre class=" language-js"><code class="language-js">Mutation<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    createUser<span class="token punctuation">:</span> <span class="token punctuation">(</span>parent<span class="token punctuation">,</span> <span class="token punctuation">{</span> id<span class="token punctuation">,</span> name<span class="token punctuation">,</span> email<span class="token punctuation">,</span> age <span class="token punctuation">}</span><span class="token punctuation">,</span> context<span class="token punctuation">,</span> info<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> newUser <span class="token operator">=</span> <span class="token punctuation">{</span> id<span class="token punctuation">,</span> name<span class="token punctuation">,</span> email<span class="token punctuation">,</span> age <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+      users<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>newUser<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">return</span> newUser<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    updateUser<span class="token punctuation">:</span> <span class="token punctuation">(</span>parent<span class="token punctuation">,</span> <span class="token punctuation">{</span> id<span class="token punctuation">,</span> name<span class="token punctuation">,</span> email<span class="token punctuation">,</span> age <span class="token punctuation">}</span><span class="token punctuation">,</span> context<span class="token punctuation">,</span> info<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> newUser <span class="token operator">=</span> users<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>user <span class="token operator">=</span><span class="token operator">></span> user<span class="token punctuation">.</span>id <span class="token operator">===</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      newUser<span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+      newUser<span class="token punctuation">.</span>email <span class="token operator">=</span> email<span class="token punctuation">;</span>
+      newUser<span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+
+      <span class="token keyword">return</span> newUser<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    deleteUser<span class="token punctuation">:</span> <span class="token punctuation">(</span>parent<span class="token punctuation">,</span> <span class="token punctuation">{</span> id <span class="token punctuation">}</span><span class="token punctuation">,</span> context<span class="token punctuation">,</span> info<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> userIndex <span class="token operator">=</span> users<span class="token punctuation">.</span><span class="token function">findIndex</span><span class="token punctuation">(</span>user <span class="token operator">=</span><span class="token operator">></span> user<span class="token punctuation">.</span>id <span class="token operator">===</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>userIndex <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"User not found."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">const</span> deletedUsers <span class="token operator">=</span> users<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>userIndex<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">return</span> deletedUsers<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span></code></pre>
+<p>现在，resolvers.js 文件应如下所示：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> users <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./db"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> resolvers <span class="token operator">=</span> <span class="token punctuation">{</span>
+  Query<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    user<span class="token punctuation">:</span> <span class="token punctuation">(</span>parent<span class="token punctuation">,</span> <span class="token punctuation">{</span> id <span class="token punctuation">}</span><span class="token punctuation">,</span> context<span class="token punctuation">,</span> info<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> users<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>user <span class="token operator">=</span><span class="token operator">></span> user<span class="token punctuation">.</span>id <span class="token operator">===</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    users<span class="token punctuation">:</span> <span class="token punctuation">(</span>parent<span class="token punctuation">,</span> args<span class="token punctuation">,</span> context<span class="token punctuation">,</span> info<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> users<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  Mutation<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    createUser<span class="token punctuation">:</span> <span class="token punctuation">(</span>parent<span class="token punctuation">,</span> <span class="token punctuation">{</span> id<span class="token punctuation">,</span> name<span class="token punctuation">,</span> email<span class="token punctuation">,</span> age <span class="token punctuation">}</span><span class="token punctuation">,</span> context<span class="token punctuation">,</span> info<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> newUser <span class="token operator">=</span> <span class="token punctuation">{</span> id<span class="token punctuation">,</span> name<span class="token punctuation">,</span> email<span class="token punctuation">,</span> age <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+      users<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>newUser<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">return</span> newUser<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    updateUser<span class="token punctuation">:</span> <span class="token punctuation">(</span>parent<span class="token punctuation">,</span> <span class="token punctuation">{</span> id<span class="token punctuation">,</span> name<span class="token punctuation">,</span> email<span class="token punctuation">,</span> age <span class="token punctuation">}</span><span class="token punctuation">,</span> context<span class="token punctuation">,</span> info<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> newUser <span class="token operator">=</span> users<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>user <span class="token operator">=</span><span class="token operator">></span> user<span class="token punctuation">.</span>id <span class="token operator">===</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      newUser<span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+      newUser<span class="token punctuation">.</span>email <span class="token operator">=</span> email<span class="token punctuation">;</span>
+      newUser<span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+
+      <span class="token keyword">return</span> newUser<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    deleteUser<span class="token punctuation">:</span> <span class="token punctuation">(</span>parent<span class="token punctuation">,</span> <span class="token punctuation">{</span> id <span class="token punctuation">}</span><span class="token punctuation">,</span> context<span class="token punctuation">,</span> info<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> userIndex <span class="token operator">=</span> users<span class="token punctuation">.</span><span class="token function">findIndex</span><span class="token punctuation">(</span>user <span class="token operator">=</span><span class="token operator">></span> user<span class="token punctuation">.</span>id <span class="token operator">===</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>userIndex <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"User not found."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">const</span> deletedUsers <span class="token operator">=</span> users<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>userIndex<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">return</span> deletedUsers<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> resolvers<span class="token punctuation">;</span></code></pre>
+<p>接着，我们将测试我们的 mutations 是否正常工作，访问 localhost:4000 并输入以下代码</p>
+<pre class=" language-js"><code class="language-js">mutation <span class="token punctuation">{</span>
+  <span class="token function">createUser</span><span class="token punctuation">(</span>id<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> <span class="token string">"Robert"</span><span class="token punctuation">,</span> email<span class="token punctuation">:</span> <span class="token string">"robert@gmail.com"</span><span class="token punctuation">,</span> age<span class="token punctuation">:</span> <span class="token number">21</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    id
+    name
+    email
+    age
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>它将会返回给我们一个新的用户，如果你想尝试创建新的的 mutations，我建议你可以自己动手尝试一下！尝试删除你所创建的同一用户，看看它是否正常工作。</p>
+<p>最后，我们将开始学习订阅（<strong>subscriptions</strong>），以及学习为什么它是如此的强大。</p>
+<h3 id="订阅（Subscriptions）"><a href="#订阅（Subscriptions）" class="headerlink" title="订阅（Subscriptions）"></a>订阅（Subscriptions）</h3><p>正如我之前所说，订阅（subscriptions）是你与服务器保持实时连接的方式。这意味着无论何时在服务器中发生事件，并且每当调用该事件时，服务器都会将相应的数据发送到客户端。</p>
+<p>通过使用订阅，你可以保持你的应用在不同的用户之间得到最新的更改。</p>
+<p><img src="/images/graphql/03.png" alt="image"></p>
+<p>基本的订阅应该如下：</p>
+<pre class=" language-js"><code class="language-js">subscription <span class="token punctuation">{</span>
+  users <span class="token punctuation">{</span>
+    id
+    name
+    email
+    age
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>你可能会说它与查询非常相似，是的，但它们的工作方式不同。当服务器中的某些内容更新时，服务器将运行订阅中指定的GraphQL查询，并将新更新的结果发送到客户端。</p>
+<p>我们并不打算在这篇文章中使用订阅，但是如果你想了解更多关于它的信息，<a href="https://hackernoon.com/from-zero-to-graphql-subscriptions-416b9e0284f3" target="_blank" rel="noopener">请点击此处</a>。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>正如你所见，GraphQL 是一项非常强大的新技术。它为我们提供了构建更好的 API 的真正能力。这就是为什么我建议你现在就开始学习 GraphQL，对我来说，它最终将取代REST。</p>
+<p>🐦<a href="https://twitter.com/leonardomso" target="_blank" rel="noopener">在推特上关注原作者！
+</a></p>
+<p>⭐<a href="https://github.com/leonardomso" target="_blank" rel="noopener">在GitHub上关注原作者！
+</a></p>
+<p>原文地址：<a href="https://medium.freecodecamp.org/a-beginners-guide-to-graphql-86f849ce1bec" target="_blank" rel="noopener">https://medium.freecodecamp.org/a-beginners-guide-to-graphql-86f849ce1bec</a></p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">zhangxinmei</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://zhangxinmei.github.io/2020/05/06/graphql/">https://zhangxinmei.github.io/2020/05/06/graphql/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">zhangxinmei</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/GraphQL/">
+                                    <span class="chip bg-color">GraphQL</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/05/06/graphql-node/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="GraphQL 简介：原理及其使用">
+                        
+                        <span class="card-title">GraphQL 简介：原理及其使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+
+GraphQL 是 API 的查询语言，它显示了服务器提供的不同类型的数据，然后客户端可以准确地选择它想要的内容。
+
+同样在 GraphQL 中，你可以一次性调用多个服务器资源，而不在需要进行多个 REST API 调用。
+你可以通过访
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            zhangxinmei
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/GraphQL/">
+                        <span class="chip bg-color">GraphQL</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/05/06/shadow-dom/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Shadow DOM">
+                        
+                        <span class="card-title">Shadow DOM</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+这是专门探索 JavaScript 及其构建组件的系列文章的第 17 篇。在识别和描述核心元素的过程中，我们还分享了构建 SessionStack 时使用的一些经验法则，这是一个 JavaScript 应用程序，需要强大且较高性能，以帮助
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            zhangxinmei
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
+                    </a>
+                    
+                    <a href="/tags/Shadow-DOM/">
+                        <span class="chip bg-color">Shadow DOM</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

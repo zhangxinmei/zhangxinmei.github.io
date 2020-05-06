@@ -115,17 +115,6 @@
     
   </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友情链接</span>
-    </a>
-    
-  </li>
-  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -214,17 +203,6 @@
 			    <i class="fa-fw fas fa-comments"></i>
 			
 			留言板
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
 		</a>
           
         </li>
@@ -647,35 +625,32 @@ instance1<span class="token punctuation">.</span>colors<span class="token punctu
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/05/06/inherit/">
+                <a href="/2020/05/06/create-object/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="继承">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="js 创建对象">
                         
-                        <span class="card-title">继承</span>
+                        <span class="card-title">js 创建对象</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            原型链原型链是实现继承的主要方法。
-基本思想：利用原型让一个引用类型继承另一个引用类型的属性和方法
-function SuperType() {
-  this.property = true;
+                            
+虽然使用 Object 构造函数或对象字面量都可以用来创建单个函数，但是有一个明显的缺点：使用同一个接口创建很多对象，会产生大量的重复代码。于是出现其他的方式来创建对象，主要有以下 6 种方式：
 
-SuperType.prototype.ge
+工厂模式function test(na
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-06
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-06
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -684,16 +659,11 @@ SuperType.prototype.ge
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/js/">
                         <span class="chip bg-color">js</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BB%A7%E6%89%BF/">
-                        <span class="chip bg-color">继承</span>
                     </a>
                     
                 </div>
