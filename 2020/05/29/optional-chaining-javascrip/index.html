@@ -1,0 +1,945 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="JavaScript 中的可选链运算符, zhangxinmei">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>JavaScript 中的可选链运算符 | zhangxinmei</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">zhangxinmei</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">zhangxinmei</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">JavaScript 中的可选链运算符</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/js/">
+                                <span class="chip bg-color">js</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-05-29
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>在 ES2020 之前，如果要访问 JavaScript 中对象的嵌套属性，则必须在每个级别检查是否为 null 或 undefined，否则最终将会抛出 TypeError。</p>
+<p>为了避免出现 TypeError，我们将不得不创建临时变量或执行一系列增量 &amp;&amp; 调用，这看起来很丑陋，并且同时占用了空间和时间。</p>
+<p>例如：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  prop<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    a<span class="token punctuation">:</span> <span class="token string">"value"</span>
+ <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// before ES2020 - no checks</span>
+obj<span class="token punctuation">.</span>foo<span class="token punctuation">.</span>a  <span class="token comment" spellcheck="true">// TypeError: Cannot read property 'a' of undefined</span>
+
+<span class="token comment" spellcheck="true">// before ES2020 - incremental nested checks</span>
+obj<span class="token punctuation">.</span>foo <span class="token operator">&amp;&amp;</span> obj<span class="token punctuation">.</span>foo<span class="token punctuation">.</span>b   <span class="token comment" spellcheck="true">// undefined</span></code></pre>
+<p>在ES2020中，通过可选链运算符 <code>?.</code> ，现在我们就可以内联进行这些检查了。</p>
+<h3 id="可选链运算符的基本用法"><a href="#可选链运算符的基本用法" class="headerlink" title="可选链运算符的基本用法"></a>可选链运算符的基本用法</h3><p>可选链运算符的语法很简单，只需在下一个访问 <code>.</code> 之前添加一个 <code>?</code> 即可。</p>
+<p>引用我们之前的示例，这是使用可选链运算符之后的操作：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  prop<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    a<span class="token punctuation">:</span> <span class="token string">"value"</span>
+ <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// Optional Chaining</span>
+obj<span class="token punctuation">.</span>foo<span class="token operator">?</span><span class="token punctuation">.</span>a      <span class="token comment" spellcheck="true">// undefined</span></code></pre>
+<p>如你所见，如果表达式返回 null 或 undefined，则可选链运算符的左侧将始终返回 undefined。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>那么，可选链运算符实际上发生了什么？我使用 <a href="https://babeljs.io/repl/#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&spec=false&loose=false&code_lz=FAYw9gdgzgLgBGARgKzgXjgbwL7CcgOgDMwwB-AgQyA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=env%2Creact%2Cstage-2%2Cstage-3%2Cenv&prettier=false&targets=&version=7.9.6&externalPlugins=" target="_blank" rel="noopener">Babel REPL</a> 检查了转换后的代码。</p>
+<p>让我们来弄清楚引擎下到底发生了什么。</p>
+<p>使用此输入：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+obj<span class="token punctuation">.</span>foo<span class="token operator">?</span><span class="token punctuation">.</span>a</code></pre>
+<p>我们会得到以下输出：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> _obj$foo<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">(</span>_obj$foo <span class="token operator">=</span> obj<span class="token punctuation">.</span>foo<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token keyword">null</span> <span class="token operator">||</span> _obj$foo <span class="token operator">===</span> <span class="token keyword">void</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token keyword">void</span> <span class="token number">0</span> <span class="token punctuation">:</span> _obj$foo<span class="token punctuation">.</span>a<span class="token punctuation">;</span></code></pre>
+<p>让我们用 undefined 替换 void 0 位，并清理变量名。然后，我们获得了更具可读性的代码段。</p>
+<p>Babel 创建一个指向对象键的临时变量，将其与 null 和 undefined 进行比较，如果所有这些测试均通过，则最终返回结果值。</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> foo<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">(</span>foo <span class="token operator">=</span> obj<span class="token punctuation">.</span>foo<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token keyword">null</span> <span class="token operator">||</span> foo <span class="token operator">===</span> undefined <span class="token operator">?</span> undefined <span class="token punctuation">:</span> foo<span class="token punctuation">.</span>a<span class="token punctuation">;</span></code></pre>
+<p>以下是可选链运算符的其他用例：</p>
+<h3 id="方法和数组"><a href="#方法和数组" class="headerlink" title="方法和数组"></a>方法和数组</h3><p>可选链运算符适用于方法和数组以及静态属性，语法几乎相同。只要记住地方<code>.</code>之前使用<code>?</code>，但在调用数组或函数之前，语法如下所示：<code>obj.foo?.()</code> 或 <code>obj.array?.[x]</code></p>
+<p>下面是一个例子：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  list<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  func<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hi'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// before ES2020 - no checks</span>
+obj<span class="token punctuation">.</span>bar<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true">// TypeError: Cannot read property '1' of undefined</span>
+obj<span class="token punctuation">.</span><span class="token function">baz</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">// TypeError: obj.baz is not a function</span>
+
+<span class="token comment" spellcheck="true">// before ES2020 - incremental nested checks</span>
+obj<span class="token punctuation">.</span>bar <span class="token operator">&amp;&amp;</span> obj<span class="token punctuation">.</span>bar<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true">// undefined</span>
+obj<span class="token punctuation">.</span>baz <span class="token operator">&amp;&amp;</span> obj<span class="token punctuation">.</span><span class="token function">baz</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">// undefined</span>
+
+<span class="token comment" spellcheck="true">// Optional Chaining</span>
+obj<span class="token punctuation">.</span>bar<span class="token operator">?</span><span class="token punctuation">.</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true">// undefined</span>
+obj<span class="token punctuation">.</span>baz<span class="token operator">?</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">// undefined</span></code></pre>
+<h3 id="有关顶级访问权限的重要说明"><a href="#有关顶级访问权限的重要说明" class="headerlink" title="有关顶级访问权限的重要说明"></a>有关顶级访问权限的重要说明</h3><p>使用可选链运算符时必须知道<strong>顶级对象必须存在</strong>，这一点很重要！也就是说，在我们之前的案例中，obj 本身必须实际存在，然后才能在可选链中向前看。</p>
+<p>例如，下面的代码将引发错误。请注意，在我们的上下文中不存在 doesnNotExist。因此，即使使用可选链运算符，我们也会出现错误。</p>
+<pre class=" language-js"><code class="language-js">doesnNotExist<span class="token operator">?</span><span class="token punctuation">.</span>property <span class="token comment" spellcheck="true">// ReferenceError: doesnNotExist is not defined</span></code></pre>
+<p>现在，如果实际实例化了该变量，则即使当前为 null，undefined 或类型错误（例如数字等），也算是合法的。请参考以下示例：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+a<span class="token operator">?</span><span class="token punctuation">.</span>property  <span class="token comment" spellcheck="true">// undefined</span>
+
+<span class="token comment" spellcheck="true">// As long as the first item is not undefined or null we're in good shape</span>
+<span class="token keyword">const</span> d <span class="token operator">=</span> <span class="token number">24</span><span class="token punctuation">;</span>
+d<span class="token punctuation">.</span>wut<span class="token operator">?</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// undefined</span>
+</code></pre>
+<p>最后，如果父级为 null 或 undefined，则需要第二个可选链来防止类型错误，请参考以下示例：</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// function call</span>
+<span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+b<span class="token punctuation">.</span>func<span class="token operator">?</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span>       <span class="token comment" spellcheck="true">// TypeError: Cannot read property 'func' of null</span>
+<span class="token comment" spellcheck="true">// Notice the ?. after b</span>
+<span class="token comment" spellcheck="true">// If we add an additional optional chain we can safegaurd against b being null</span>
+b<span class="token operator">?</span><span class="token punctuation">.</span>func<span class="token operator">?</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span>      <span class="token comment" spellcheck="true">// undefined</span>
+
+<span class="token comment" spellcheck="true">// array use</span>
+<span class="token comment" spellcheck="true">// Same thing, we can safegaurd against b being undefined using the first ?.</span>
+<span class="token keyword">const</span> c <span class="token operator">=</span> undefined<span class="token punctuation">;</span>
+c<span class="token punctuation">.</span>array<span class="token operator">?</span><span class="token punctuation">.</span><span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span>   <span class="token comment" spellcheck="true">// TypeError: Cannot read property 'array' of undefined</span>
+c<span class="token operator">?</span><span class="token punctuation">.</span>array<span class="token operator">?</span><span class="token punctuation">.</span><span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true">// undefined</span>
+</code></pre>
+<p>根据上述逻辑，我的建议是：当你在顶层对象上调用方法或数组时总是添加一个额外的<code>?</code>。总而言之：</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// good idea</span>
+topLevel<span class="token operator">?</span><span class="token punctuation">.</span>func<span class="token operator">?</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+topLevel<span class="token operator">?</span><span class="token punctuation">.</span>arr<span class="token operator">?</span><span class="token punctuation">.</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true">// potentially could throw an error if topLevel is null or undefined</span>
+topLevel<span class="token punctuation">.</span>func<span class="token operator">?</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+topLevel<span class="token punctuation">.</span>arr<span class="token operator">?</span><span class="token punctuation">.</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span></code></pre>
+<h3 id="短链"><a href="#短链" class="headerlink" title="短链"></a>短链</h3><p>假设你的查询没有返回 undefined，但是你想检测其他代码。你可以在同一表达式中完成所有操作，这是一个短链的例子：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">{</span>
+ list<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// Short Circuiting</span>
+data<span class="token punctuation">.</span>list<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span>       <span class="token comment" spellcheck="true">// [3, 2, 1]</span>
+data<span class="token punctuation">.</span>items<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span>      <span class="token comment" spellcheck="true">// undefined</span></code></pre>
+<h3 id="长链"><a href="#长链" class="headerlink" title="长链"></a>长链</h3><p>很棒的是，你可以嵌套长链的可选链，非常适合深层嵌套的对象。在这种情况下，嵌套可选链运算符如下所示：</p>
+<pre class=" language-js"><code class="language-js">obj<span class="token operator">?</span><span class="token punctuation">.</span>parent<span class="token operator">?</span><span class="token punctuation">.</span>child<span class="token operator">?</span><span class="token punctuation">.</span>name <span class="token comment" spellcheck="true">// undefined</span></code></pre>
+<h3 id="堆码"><a href="#堆码" class="headerlink" title="堆码"></a>堆码</h3><p>你可以根据需要堆叠和链接任意数量的可选链。</p>
+<pre class=" language-js"><code class="language-js">one<span class="token operator">?</span><span class="token punctuation">.</span>two<span class="token operator">?</span><span class="token punctuation">.</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>three<span class="token operator">?</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span>four</code></pre>
+<h3 id="不支持的操作"><a href="#不支持的操作" class="headerlink" title="不支持的操作"></a>不支持的操作</h3><p>不要去尝试对所有事物进行可选链接！是的，虽然很酷，但并不是所有在 ECMA 下的东西都可以选择链接在一起。基本上，只需记住 3 种受支持的操作：属性访问器，数组和函数调用。</p>
+<p>以下是可选链接中不支持的操作列表：</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// Delete</span>
+<span class="token keyword">delete</span> a<span class="token punctuation">.</span><span class="token operator">?</span>b   <span class="token comment" spellcheck="true">// ReferenceError: Can't find variable: a</span>
+
+<span class="token comment" spellcheck="true">// Constructor</span>
+<span class="token keyword">new</span> <span class="token class-name">a</span><span class="token operator">?</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true">// SyntaxError: Cannot call constructor in an optional chain.</span>
+
+<span class="token comment" spellcheck="true">// Template literals</span>
+a<span class="token operator">?</span><span class="token punctuation">.</span><span class="token template-string"><span class="token string">`string`</span></span>   <span class="token comment" spellcheck="true">// SyntaxError: Cannot use tagged templates in an optional chain.</span>
+
+<span class="token comment" spellcheck="true">// Property assignment</span>
+a<span class="token operator">?</span><span class="token punctuation">.</span>b <span class="token operator">=</span> c      <span class="token comment" spellcheck="true">// SyntaxError: Left side of assignment is not a reference.</span>
+
+<span class="token comment" spellcheck="true">// Imports, Exports, Super, etc. etc.</span>
+</code></pre>
+<h3 id="可选链运算符在实际中的示例"><a href="#可选链运算符在实际中的示例" class="headerlink" title="可选链运算符在实际中的示例"></a>可选链运算符在实际中的示例</h3><p>那么，可选链运算符在实际中有什么帮助呢？</p>
+<p>尽管这些都是琐碎的示例，但在 JavaScript 中这种情况经常发生，在 Web 浏览器的情况下甚至更多：表单值，DOM 对象属性，API 结果，对象方法，列表等等。访问嵌套属性时，我们必须始终加以保护。</p>
+<p>这是一个更真实的例子：假设你的 API 正在返回客户数据。数据可能存在或可能不存在，并且可能包含或可能不包含 orders 数组，但是如果你要在列表中呈现这些项目。</p>
+<p>在可选链运算符出现之前，你可能会执行以下操作：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">if</span> <span class="token punctuation">(</span>customer <span class="token operator">&amp;&amp;</span> customer<span class="token punctuation">.</span>orders<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ customer<span class="token punctuation">.</span>orders<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>order <span class="token operator">=</span><span class="token operator">></span> <span class="token function">printOrder</span><span class="token punctuation">(</span>order<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>现在，你可以在进行其他工作之前，先检查 API 响应返回的对象。</p>
+<pre class=" language-js"><code class="language-js">customer<span class="token operator">?</span><span class="token punctuation">.</span>orders<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>order <span class="token operator">=</span><span class="token operator">></span> <span class="token function">printOrder</span><span class="token punctuation">(</span>order<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>你可以使用可选链运算符来检查 DOM 元素或 React 组件的存在，然后再访问它们的属性或调用它们的方法。</p>
+<p>例如，假设你想在 React 组件中的 prop 上运行回调方法，但不能保证会提供它。现在，只需要在调用回调方法之前加上 <code>?.</code> 即可。</p>
+<pre class=" language-js"><code class="language-js">props<span class="token punctuation">.</span>onClick<span class="token operator">?</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>这是另一个琐碎的例子：假设你要向窗口对象添加事件侦听器，但你不能保证窗口对象是否存在，也许你正在执行服务器端渲染，并且可能在节点中。</p>
+<pre class=" language-js"><code class="language-js">window<span class="token operator">?</span><span class="token punctuation">.</span>addEventlistener<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>假设你要在某些元素上设置属性，但不确定它们是否存在，只需使用可选链运算符。</p>
+<pre class=" language-js"><code class="language-js">document<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'[data-foo]'</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'disabled'</span><span class="token punctuation">,</span> <span class="token string">'true'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>或者，也许你正在尝试访问所有浏览器尚不支持的实验性 API。假设你要使用 replaceAll 数组方法，该方法目前仅在 Safari 中受支持，使用可选链接可以避免错误。</p>
+<pre class=" language-js"><code class="language-js"><span class="token string">"pool"</span><span class="token punctuation">.</span>replaceAll<span class="token operator">?</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token string">"o"</span><span class="token punctuation">,</span> <span class="token string">"e"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// undefined  or  peel</span></code></pre>
+<h3 id="开始在项目中使用可选链运算符"><a href="#开始在项目中使用可选链运算符" class="headerlink" title="开始在项目中使用可选链运算符"></a>开始在项目中使用可选链运算符</h3><p>大多数现代浏览器已支持可选链接，为了安全并向后兼容，请使用转换器。如果你使用的是 Babel，请安装 OC 插件…</p>
+<pre class=" language-js"><code class="language-js">npm install @babel<span class="token operator">/</span>plugin<span class="token operator">-</span>proposal<span class="token operator">-</span>optional<span class="token operator">-</span>chaining</code></pre>
+<p>并将其添加到你的 <code>.babelrc</code> 文件中：</p>
+<pre class=" language-js"><code class="language-js"><span class="token punctuation">{</span>
+  <span class="token string">"plugins"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"@babel/plugin-proposal-optional-chaining"</span><span class="token punctuation">,</span>
+ <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="阅读有关可选链运算符的更多信息"><a href="#阅读有关可选链运算符的更多信息" class="headerlink" title="阅读有关可选链运算符的更多信息"></a>阅读有关可选链运算符的更多信息</h3><p>由于可选链现在处于第 4 阶段，因此可以在 <a href="https://tc39.es/proposal-optional-chaining/" target="_blank" rel="noopener">ECMAScript</a> 上查看其文档。另外，请查看有关可选链运算符的最终 <a href="https://github.com/tc39/proposal-optional-chaining" target="_blank" rel="noopener">TC39提案</a> 和 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining" target="_blank" rel="noopener">MDN</a> 上有关可选链运算符的文档，以了解更多详细信息。</p>
+<p>原文链接：<a href="https://seifi.org/javascript/optional-chaining-in-javascript.html" target="_blank" rel="noopener">https://seifi.org/javascript/optional-chaining-in-javascript.html</a></p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">zhangxinmei</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://zhangxinmei.github.io/2020/05/29/optional-chaining-javascrip/">https://zhangxinmei.github.io/2020/05/29/optional-chaining-javascrip/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">zhangxinmei</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/js/">
+                                    <span class="chip bg-color">js</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/05/29/optional-chaining-javascrip/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="JavaScript 中的可选链运算符">
+                        
+                        <span class="card-title">JavaScript 中的可选链运算符</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            在 ES2020 之前，如果要访问 JavaScript 中对象的嵌套属性，则必须在每个级别检查是否为 null 或 undefined，否则最终将会抛出 TypeError。
+为了避免出现 TypeError，我们将不得不创建临时变量或执
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            zhangxinmei
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/05/06/css-ellipsis/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="本溢出处理方案">
+                        
+                        <span class="card-title">本溢出处理方案</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+单行文本溢出
+
+首先需要先设置元素的宽度，然后设置下面
+overflow: hidden;
+white-space: nowrap; // 设置文字不能换行
+text-overflow: ellipsis; // 文本溢出时显示...
+
+
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            zhangxinmei
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CSS/">
+                        <span class="chip bg-color">CSS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
